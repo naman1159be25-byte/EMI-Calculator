@@ -68,7 +68,6 @@ button {
     transition: 0.3s;
 }
 
-/* Glow + hover */
 button:hover {
     box-shadow: 0 0 10px #00c6ff,
                 0 0 20px #0072ff,
@@ -76,7 +75,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Result Box */
 #result {
     margin-top: 15px;
     text-align: center;
@@ -85,4 +83,19 @@ button:hover {
     background: rgba(0,0,0,0.2);
     padding: 10px;
     border-radius: 10px;
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}
+#bank{
+    width: 75%;
+}
+.box{
+    display: flex;
+    padding: 12px;
+}
+img{
+    width: 20%;
+    margin-right: 12px;
 }
