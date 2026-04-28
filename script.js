@@ -104,8 +104,19 @@ bankDropDown.addEventListener("change",()=>{
 amt.addEventListener("change",()=>{
   if(amt.value>2000000){
     amtError.innerHTML = "Amount should not exceed 50 lacs";
+    
   }
   else if(amt.value<50000){
     amtError.innerHTML = "Amount should greater than 50,000";
   }
+  amt.style.border = "2px solid red";
 })
+amt.addEventListener("blur", () => {
+  if (amt.value.trim() === "") {
+    amtError.innerText = "Amount is required!";
+  }
+  amt.style.border = "2px solid red";
+});
+function calculateEMI(){
+
+}
