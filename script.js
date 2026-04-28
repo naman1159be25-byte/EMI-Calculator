@@ -78,6 +78,9 @@ let type = document.querySelector("#loanType");
 let typeChild = document.querySelectorAll("#loanType option");
 let amtError = document.querySelector("#amtError");
 let selected = banks[0];
+let time = document.querySelector("#time");
+let timeError = document.querySelector("#timeError");
+let res = document.querySelector("#result");
 //default 
 rate.value = banks[0].rates[0];
 banks.forEach((bank,idx)=>{
@@ -101,22 +104,57 @@ bankDropDown.addEventListener("change",()=>{
   logo.src = `${selected.logo}`;
   updateRate();
 })
-amt.addEventListener("change",()=>{
-  if(amt.value>2000000){
-    amtError.innerHTML = "Amount should not exceed 50 lacs";
-    
+amt.addEventListener("input", () => {
+  let value = +amt.value;
+
+  if (value > 5000000) {
+    amtError.innerText = "Amount should not exceed ₹50,00,000";
+    amt.classList.add("error");
+  } 
+  else if (value < 50000 && value !== 0) {
+    amtError.innerText = "Amount should be greater than ₹50,000";
+    amt.classList.add("error");
+  } 
+  else {
+    amtError.innerText = "";
+    amt.classList.remove("error");
   }
-  else if(amt.value<50000){
-    amtError.innerHTML = "Amount should greater than 50,000";
-  }
-  amt.style.border = "2px solid red";
-})
+});
 amt.addEventListener("blur", () => {
   if (amt.value.trim() === "") {
     amtError.innerText = "Amount is required!";
+    amt.style.border = "2px solid red";
   }
-  amt.style.border = "2px solid red";
+});
+time.addEventListener("input",()=>{
+  let val = +time.value;
+  if(val>120){
+    timeError.innerHTML = "time should be less than 120 months";
+    time.classList.add("error");
+    
+  }
+  else if(val<6){
+    timeError.innerHTML = "Time should be atleast 6 months";
+    time.classList.add("error");
+  }
+  else{
+    timeError.innerHTML="";
+    time.classList.remove("error");
+  }
+  
+})
+time.addEventListener("blur", () => {
+  if (val.trim() === "") {
+    timeError.innerText = "Time is required!";
+    time.style.border = "2px solid red";
+  }
 });
 function calculateEMI(){
-
+  let R = rate.value/12/100;
+  let N = time.value;
+  let P = amt.value;
+  let short = Math.pow(1+R,N);
+  let Emi = ((P*R)*short)/(short-1);
+  res.innerHTML = `EMI: ₹${Emi.toFixed(2)}`;
+  res.style.cssText = "visibility:visible;";
 }
