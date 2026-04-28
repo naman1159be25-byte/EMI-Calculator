@@ -144,7 +144,7 @@ time.addEventListener("input",()=>{
   
 })
 time.addEventListener("blur", () => {
-  if (val.trim() === "") {
+  if (time.value.trim() === "") {
     timeError.innerText = "Time is required!";
     time.style.border = "2px solid red";
   }
@@ -155,6 +155,11 @@ function calculateEMI(){
   let P = amt.value;
   let short = Math.pow(1+R,N);
   let Emi = ((P*R)*short)/(short-1);
+  if(Nunber.isNaN(Emi)){
+    console.log("hii");
+    res.innerHTML=""
+    return;
+  }
   res.innerHTML = `EMI: ₹${Emi.toFixed(2)}`;
   res.style.cssText = "visibility:visible;";
 }
