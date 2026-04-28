@@ -76,6 +76,7 @@ let amt = document.querySelector("#amount");
 let logo = document.querySelector("img");
 let type = document.querySelector("#loanType");
 let typeChild = document.querySelectorAll("#loanType option");
+let amtError = document.querySelector("#amtError");
 let selected = banks[0];
 //default 
 rate.value = banks[0].rates[0];
@@ -85,16 +86,26 @@ banks.forEach((bank,idx)=>{
   option.text = bank.name;
   bankDropDown.appendChild(option);
 })
-function updateRate(idx){
-  rate.value = selected.rates[idx];
+let index = 0;
+function updateRate(){
+  rate.value = selected.rates[index];
 }
 type.addEventListener("change",()=>{
   index = Number(type.value);
-  updateRate(index);
+  updateRate(selected,index);
+  
 })
 
 bankDropDown.addEventListener("change",()=>{
   selected = banks[bankDropDown.value];
   logo.src = `${selected.logo}`;
+  updateRate();
 })
-
+amt.addEventListener("change",()=>{
+  if(amt.value>2000000){
+    amtError.innerHTML = "Amount should not exceed 50 lacs";
+  }
+  else if(amt.value<50000){
+    amtError.innerHTML = "Amount should greater than 50,000";
+  }
+})
