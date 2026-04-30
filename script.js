@@ -163,4 +163,15 @@ function calculateEMI(){
   res.innerHTML = `EMI: ₹${Emi.toFixed(2)}`;
   res.style.cssText = "visibility:visible;";
 }
-submitBtn.addEventListener("click",calculateEMI);
+submitBtn.addEventListener("click",()=>{
+  if (amt.value.trim() === "") {
+    amtError.innerText = "Amount is required!";
+    amt.classList.add("error");
+  }
+  if (time.value.trim() === "") {
+    timeError.innerText = "Time is required!";
+    time.classList.add("error");
+  }
+  else{
+  calculateEMI();}
+});

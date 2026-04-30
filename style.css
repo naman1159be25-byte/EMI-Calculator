@@ -4,13 +4,26 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
 }
-
-body {
-    height: 100vh;
+body{
     background-image: url("https://plus.unsplash.com/premium_photo-1680721443657-a936f7cb9f37?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color:aliceblue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hero{
+    
+height: calc(100vh - 200px);
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    margin-top: 80px;
 }
 
 /* Main Card */
@@ -102,4 +115,139 @@ img{
 }
 .error{
     border: 2px solid red;
+}
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 90%;
+  max-width: 900px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 25px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 50px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-weight: 600;
+}
+
+/* Nav links */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-left: 20px;
+  text-decoration: none;
+
+  color: #cbd5f5;
+  font-size: 15px;
+
+  transition: 0.3s ease;
+}
+
+
+/* Icons inside links */
+.nav-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hover effect */
+.nav-link:hover {
+  color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+/* Active glow effect */
+.nav-link:active {
+  transform: scale(0.95);
+}
+/* Footer container */
+.footer {
+  margin: 40px auto 20px;
+  width: 90%;
+  max-width: 900px;
+
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+
+  color: white;
+  height: 89px;
+}
+
+/* Layout */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Links */
+.footer-links a {
+  margin: 0 10px;
+  color: #cbd5f5;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #38bdf8;
+}
+
+/* Social icons */
+.footer-social a {
+  margin-left: 12px;
+  color: #38bdf8;
+  display: inline-flex;
+  transition: 0.3s ease;
+}
+
+.footer-social svg {
+  width: 22px;
+  height: 22px;
+}
+
+.footer-social a:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+/* Bottom text */
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #94a3b8;
 }
