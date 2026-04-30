@@ -80,6 +80,7 @@ let amtError = document.querySelector("#amtError");
 let selected = banks[0];
 let time = document.querySelector("#time");
 let timeError = document.querySelector("#timeError");
+let submitBtn = document.querySelector("#res");
 let res = document.querySelector("#result");
 //default 
 rate.value = banks[0].rates[0];
@@ -155,11 +156,11 @@ function calculateEMI(){
   let P = amt.value;
   let short = Math.pow(1+R,N);
   let Emi = ((P*R)*short)/(short-1);
-  if(Nunber.isNaN(Emi)){
-    console.log("hii");
+  if(Number.isNaN(Emi)){
     res.innerHTML=""
     return;
   }
   res.innerHTML = `EMI: ₹${Emi.toFixed(2)}`;
   res.style.cssText = "visibility:visible;";
 }
+submitBtn.addEventListener("click",calculateEMI);
