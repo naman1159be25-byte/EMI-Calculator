@@ -60,6 +60,13 @@ input, select {
     outline: none;
     background: rgba(255,255,255,0.2);
     color: white;
+    background: linear-gradient(135deg,rgba(255,138,135,0.35),rgba(182,255,204,0.35));
+    backdrop-filter: blur(12px);
+    color: #fff;
+}
+select option{
+  background: #1f2937;
+  color: #fff;
 }
 
 /* Placeholder color */
