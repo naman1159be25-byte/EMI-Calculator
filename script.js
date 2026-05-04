@@ -96,7 +96,7 @@ function updateRate(){
 }
 type.addEventListener("change",()=>{
   index = Number(type.value);
-  updateRate(selected,index);
+  updateRate();
   
 })
 
@@ -124,7 +124,7 @@ amt.addEventListener("input", () => {
 amt.addEventListener("blur", () => {
   if (amt.value.trim() === "") {
     amtError.innerText = "Amount is required!";
-    amt.style.border = "2px solid red";
+    amt.classList.add("error");
   }
 });
 time.addEventListener("input",()=>{
@@ -147,8 +147,9 @@ time.addEventListener("input",()=>{
 time.addEventListener("blur", () => {
   if (time.value.trim() === "") {
     timeError.innerText = "Time is required!";
-    time.style.border = "2px solid red";
+    time.classList.add("error");
   }
+  
 });
 function calculateEMI(){
   let R = rate.value/12/100;
@@ -164,7 +165,7 @@ function calculateEMI(){
   res.style.cssText = "visibility:visible;";
 }
 submitBtn.addEventListener("click",()=>{
-  if (amt.value.trim() === "") {
+  if (amt.value.trim() === "") { 
     amtError.innerText = "Amount is required!";
     amt.classList.add("error");
   }
